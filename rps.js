@@ -37,7 +37,42 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(computerSelection)
-console.log(playRound(playerSelection, computerSelection));
+function game(){
+    var playerScore = 0;
+    var computerScore = 0;
+
+    for(let i = 0; i < 5; i++){
+        var round = i + 1;
+        console.log("Round ", round.toString());
+
+        const playerSelection = prompt("Rock, Paper, or Scissors?")
+        const computerSelection = getComputerChoice();
+
+        console.log("Computer chose:", computerSelection)
+
+        var result = playRound(playerSelection, computerSelection) 
+        if(result.includes("Win")){
+            playerScore++;
+        }
+        else{
+            computerScore++;
+        }
+        console.log(result);
+    }
+
+    
+    console.log("Game Over");
+    console.log("Your Score: ", playerScore.toString());
+    console.log("Computer Score: ", computerScore.toString());
+    if(playerScore > computerScore){
+        console.log("You beat the computer! Good job!");
+    }
+    else if (playerScore < computerScore){
+        console.log("You lost to the computer! Try Again!");
+    }
+    else{
+        console.log("You tied with the computer. Not bad!")
+    }
+}
+
+game();
